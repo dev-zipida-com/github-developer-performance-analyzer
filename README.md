@@ -35,7 +35,8 @@ This script analyzes developer performance and calculates contribution scores fo
    ```
    GITHUB_ACCESS_TOKEN=your_github_access_token
    REPO_LIST=owner/repo1,owner/repo2
-   WORKING_DAYS=90
+   START_DATE = 2023-07-01
+   END_DATE = 2024-07-01
    FILEPATH=developer_performance.csv
    ```
 

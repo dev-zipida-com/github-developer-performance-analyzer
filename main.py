@@ -11,7 +11,8 @@ load_dotenv(override=True)
 
 GITHUB_ACCESS_TOKEN = os.getenv("GITHUB_ACCESS_TOKEN")
 REPO_LIST = os.getenv("REPO_LIST").split(",")
-WORKING_DAYS = int(os.getenv("WORKING_DAYS"))
+START_DATE = os.getenv("START_DATE")
+END_DATE = os.getenv("END_DATE")
 FILEPATH = os.getenv("FILEPATH")
 
 def analyze_developer_performance(repos):
@@ -105,9 +106,9 @@ if __name__ == '__main__':
   # 분석할 레포지토리 리스트
   repos = REPO_LIST
 
-  # 분석 기간 설정 (예: 최근 3개월)
-  end_date = datetime.now(UTC)
-  start_date = (end_date - timedelta(days=WORKING_DAYS)).replace(tzinfo=UTC)
+  # 분석 기간 설정 
+  start_date = datetime.strptime(START_DATE, "%Y-%m-%d").replace(tzinfo=UTC)
+  end_date = datetime.strptime(END_DATE, "%Y-%m-%d").replace(tzinfo=UTC)
 
   # 성과 데이터 수집
   performance_data = analyze_developer_performance(repos)
